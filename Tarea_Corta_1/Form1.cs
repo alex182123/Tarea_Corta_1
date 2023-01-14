@@ -16,5 +16,10 @@ namespace Tarea_Corta_1
         {
             InitializeComponent();
         }
+
+        private void archivoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            opf_Menu_Script.ShowDialog();
+        }
     }
 }
