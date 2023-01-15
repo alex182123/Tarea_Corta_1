@@ -21,5 +21,15 @@ namespace Tarea_Corta_1
         {
             opf_Menu_Script.ShowDialog();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+                
+        }
+
+        private void btn_Conectar_BD_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
