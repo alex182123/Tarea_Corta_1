@@ -78,7 +78,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Clases\Clases.csproj">
+      <Project>{5218c4e3-d42a-4656-b41e-8c99544d9e54}</Project>
+      <Name>Clases</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Imagenes\453178.png" />
   </ItemGroup>
