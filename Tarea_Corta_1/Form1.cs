@@ -16,5 +16,20 @@ namespace Tarea_Corta_1
         {
             InitializeComponent();
         }
+
+        private void archivoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            opf_Menu_Script.ShowDialog();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+                
+        }
+
+        private void btn_Conectar_BD_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
