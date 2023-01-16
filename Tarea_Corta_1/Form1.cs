@@ -25,17 +25,63 @@ namespace Tarea_Corta_1
         private void Form1_Load(object sender, EventArgs e)
         {
             Class_BD obj_Conexion = new Class_BD();
-            obj_Conexion.ConsultarBases();
-            ((ListBox)cbl_BD).DataSource = obj_Conexion.ds;
-            ((ListBox)cbl_BD).DisplayMember = "name";
-            ((ListBox)cbl_BD).ValueMember = "name";
-            //MessageBox.Show(obj_Conexion.ConsultarBases());
+            cbl_BD.Enabled = false;
+            btn_desconectar.Enabled = false;
+
         }
 
         private void btn_Conectar_BD_Click(object sender, EventArgs e)
         {
             Class_BD obj_Conexion = new Class_BD();
-            //MessageBox.Show(obj_Conexion.ConsultarBases());
+            if (string.IsNullOrEmpty(txt_NombreInstancia.Text))
+            {
+                MessageBox.Show(null,"Ingrese un nombre de instacia sql server valido","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+            else
+            {
+                try
+                {
+                    obj_Conexion.ConsultarBases(txt_NombreInstancia.Text);
+                    ((ListBox)cbl_BD).DataSource = obj_Conexion.ds;
+                    ((ListBox)cbl_BD).DisplayMember = "name";
+                    ((ListBox)cbl_BD).ValueMember = "name";
+                    btn_desconectar.Enabled = true;
+                    btn_Conectar_BD.Enabled = false;
+                    cbl_BD.Enabled = true;
+                    txt_NombreInstancia.Enabled = false;
+                    MessageBox.Show(null, "Conexion establecida", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(null, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                
+                //MessageBox.Show(obj_Conexion.ConsultarBases());
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            btn_desconectar.Enabled = false;
+            btn_Conectar_BD.Enabled = true;
+            ((ListBox)cbl_BD).DataSource = null;
+            txt_NombreInstancia.Enabled = true;
+        }
+
+        private void l_lbl_SelectTodas_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            for(int i=0;i<cbl_BD.Items.Count;i++) 
+            {
+                cbl_BD.SetItemChecked(i, true);
+            }
+        }
+
+        private void l_lblSelectNinguna_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            for (int i = 0; i < cbl_BD.Items.Count; i++)
+            {
+                cbl_BD.SetItemChecked(i, false);
+            }
         }
     }
 }

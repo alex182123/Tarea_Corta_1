@@ -16,34 +16,34 @@ namespace Clases
         SqlConnection Conexion;
         public DataTable ds { get; } = new DataTable();
 
-        public void CrearStringConexionInicial()
+        public void CrearStringConexionInicial(string NombreInstancia)
         {
-            DataSource = "DESKTOP-7G4BD9C";
+            DataSource = NombreInstancia;
+            //DataSource = "DESKTOP-7G4BD9C";
             InitialCatalog = "Master";
             IntegratedSecurity = "SSPI";
             str_conexion = "Data Source =" + DataSource
                 + "; Initial Catalog =" + InitialCatalog
                 + "; Integrated Security=" + IntegratedSecurity;
         }
-        public string AbrirConexion()
+        public void AbrirConexion()
         {
             try
             {
                 Conexion = new SqlConnection(str_conexion);
                 Conexion.Open();
-                return Conexion.State.ToString();
+                //Conexion.
             }catch(Exception ex)
             {
                 throw new Exception(ex.Message.ToString());
             }
             
         }
-        public string CerrarConexion()
+        public void CerrarConexion()
         {
             try
             {
                 Conexion.Close();
-                return Conexion.State.ToString();
             }
             catch (Exception ex)
             {
@@ -51,12 +51,11 @@ namespace Clases
             }
             
         }
-        public void ConsultarBases()
+        public void ConsultarBases(string NombreInstancia)
         {
             try
             {
-                
-                CrearStringConexionInicial();
+                CrearStringConexionInicial(NombreInstancia);
                 AbrirConexion();
                 SqlCommand cmd = new SqlCommand("SELECT name FROM sys.databases where database_id >= 5",Conexion);
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -85,5 +84,6 @@ namespace Clases
                 CerrarConexion();
             }
         }
+      
     }
 }
