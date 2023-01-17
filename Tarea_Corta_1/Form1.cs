@@ -27,6 +27,8 @@ namespace Tarea_Corta_1
             Class_BD obj_Conexion = new Class_BD();
             cbl_BD.Enabled = false;
             btn_desconectar.Enabled = false;
+            l_lblSelectNinguna.Enabled = false;
+            l_lbl_SelectTodas.Enabled = false;
 
         }
 
@@ -49,6 +51,8 @@ namespace Tarea_Corta_1
                     btn_Conectar_BD.Enabled = false;
                     cbl_BD.Enabled = true;
                     txt_NombreInstancia.Enabled = false;
+                    l_lblSelectNinguna.Enabled = true;
+                    l_lbl_SelectTodas.Enabled = true;
                     MessageBox.Show(null, "Conexion establecida", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
@@ -66,6 +70,8 @@ namespace Tarea_Corta_1
             btn_Conectar_BD.Enabled = true;
             ((ListBox)cbl_BD).DataSource = null;
             txt_NombreInstancia.Enabled = true;
+            l_lblSelectNinguna.Enabled = false;
+            l_lbl_SelectTodas.Enabled = false;
         }
 
         private void l_lbl_SelectTodas_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

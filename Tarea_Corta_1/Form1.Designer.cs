@@ -39,11 +39,19 @@ namespace Tarea_Corta_1
             this.lbl_NombreInstancia = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.l_lbl_SelectTodas = new System.Windows.Forms.LinkLabel();
             this.l_lblSelectNinguna = new System.Windows.Forms.LinkLabel();
+            this.l_lbl_SelectTodas = new System.Windows.Forms.LinkLabel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.txt_resultado_script_bd = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -141,17 +149,6 @@ namespace Tarea_Corta_1
             this.panel2.Size = new System.Drawing.Size(221, 306);
             this.panel2.TabIndex = 7;
             // 
-            // l_lbl_SelectTodas
-            // 
-            this.l_lbl_SelectTodas.AutoSize = true;
-            this.l_lbl_SelectTodas.Location = new System.Drawing.Point(3, 6);
-            this.l_lbl_SelectTodas.Name = "l_lbl_SelectTodas";
-            this.l_lbl_SelectTodas.Size = new System.Drawing.Size(92, 13);
-            this.l_lbl_SelectTodas.TabIndex = 8;
-            this.l_lbl_SelectTodas.TabStop = true;
-            this.l_lbl_SelectTodas.Text = "Seleccionar todas";
-            this.l_lbl_SelectTodas.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.l_lbl_SelectTodas_LinkClicked);
-            // 
             // l_lblSelectNinguna
             // 
             this.l_lblSelectNinguna.AutoSize = true;
@@ -163,12 +160,80 @@ namespace Tarea_Corta_1
             this.l_lblSelectNinguna.Text = "Seleccionar ninguna";
             this.l_lblSelectNinguna.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.l_lblSelectNinguna_LinkClicked);
             // 
+            // l_lbl_SelectTodas
+            // 
+            this.l_lbl_SelectTodas.AutoSize = true;
+            this.l_lbl_SelectTodas.Location = new System.Drawing.Point(3, 6);
+            this.l_lbl_SelectTodas.Name = "l_lbl_SelectTodas";
+            this.l_lbl_SelectTodas.Size = new System.Drawing.Size(92, 13);
+            this.l_lbl_SelectTodas.TabIndex = 8;
+            this.l_lbl_SelectTodas.TabStop = true;
+            this.l_lbl_SelectTodas.Text = "Seleccionar todas";
+            this.l_lbl_SelectTodas.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.l_lbl_SelectTodas_LinkClicked);
+            // 
+            // textBox1
+            // 
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox1.Location = new System.Drawing.Point(12, 26);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.textBox1.Size = new System.Drawing.Size(631, 196);
+            this.textBox1.TabIndex = 8;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.White;
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.textBox1);
+            this.panel3.Location = new System.Drawing.Point(265, 105);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(660, 227);
+            this.panel3.TabIndex = 9;
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Location = new System.Drawing.Point(265, 338);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(660, 122);
+            this.tabControl1.TabIndex = 10;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.txt_resultado_script_bd);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(652, 96);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Resultados";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // txt_resultado_script_bd
+            // 
+            this.txt_resultado_script_bd.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.txt_resultado_script_bd.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txt_resultado_script_bd.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_resultado_script_bd.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.txt_resultado_script_bd.Location = new System.Drawing.Point(0, 0);
+            this.txt_resultado_script_bd.Multiline = true;
+            this.txt_resultado_script_bd.Name = "txt_resultado_script_bd";
+            this.txt_resultado_script_bd.ReadOnly = true;
+            this.txt_resultado_script_bd.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txt_resultado_script_bd.Size = new System.Drawing.Size(649, 142);
+            this.txt_resultado_script_bd.TabIndex = 9;
+            this.txt_resultado_script_bd.Text = "Esperando conexion...";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(973, 488);
+            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
@@ -182,6 +247,11 @@ namespace Tarea_Corta_1
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -201,6 +271,11 @@ namespace Tarea_Corta_1
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.LinkLabel l_lbl_SelectTodas;
         private System.Windows.Forms.LinkLabel l_lblSelectNinguna;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TextBox txt_resultado_script_bd;
     }
 }
 
