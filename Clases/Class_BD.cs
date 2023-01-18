@@ -13,6 +13,8 @@ namespace Clases
         private string InitialCatalog;
         private string IntegratedSecurity;
         private string str_conexion;
+        private string Id_User;
+        private string Password;
         SqlConnection Conexion;
         public DataTable ds { get; } = new DataTable();
 
@@ -25,6 +27,19 @@ namespace Clases
             str_conexion = "Data Source =" + DataSource
                 + "; Initial Catalog =" + InitialCatalog
                 + "; Integrated Security=" + IntegratedSecurity;
+        }
+        public void CrearStringSQLAuthentication(string NombreInstancia, string NombreUsuario, string Contrasena)
+        {
+            DataSource = NombreInstancia;
+            //DataSource = "DESKTOP-7G4BD9C";
+            InitialCatalog = "Master";
+            IntegratedSecurity = "SSPI";
+            Id_User = NombreUsuario;
+            Password = Contrasena;
+            str_conexion = "Data Source =" + DataSource
+                + "; Initial Catalog =" + InitialCatalog
+                + "; User ID=" + Id_User +
+                "; Password=" + Password;
         }
         public void AbrirConexion()
         {
@@ -51,11 +66,21 @@ namespace Clases
             }
             
         }
-        public void ConsultarBases(string NombreInstancia)
+        public void ConsultarBases(string NombreInstancia, int tipoconexion, string nombreusuario = "", string contrasena = "")
         {
             try
             {
-                CrearStringConexionInicial(NombreInstancia);
+                if (tipoconexion == 1)
+                {
+                    CrearStringConexionInicial(NombreInstancia);
+                }
+                else {
+                    CrearStringSQLAuthentication(NombreInstancia,nombreusuario,contrasena);
+                }
+                if(ds.Rows.Count > 0)
+                {
+                    ds.Clear();
+                }
                 AbrirConexion();
                 SqlCommand cmd = new SqlCommand("SELECT name FROM sys.databases where database_id >= 5",Conexion);
                 SqlDataAdapter da = new SqlDataAdapter(cmd);

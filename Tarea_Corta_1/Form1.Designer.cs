@@ -37,21 +37,35 @@ namespace Tarea_Corta_1
             this.txt_NombreInstancia = new System.Windows.Forms.TextBox();
             this.btn_desconectar = new System.Windows.Forms.Button();
             this.lbl_NombreInstancia = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.l_lblSelectNinguna = new System.Windows.Forms.LinkLabel();
             this.l_lbl_SelectTodas = new System.Windows.Forms.LinkLabel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txt_CompiladorScript = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.txt_resultado_script_bd = new System.Windows.Forms.TextBox();
+            this.tabControl2 = new System.Windows.Forms.TabControl();
+            this.tp0_WindowsAuthentication = new System.Windows.Forms.TabPage();
+            this.tp1_SQLAuthentication = new System.Windows.Forms.TabPage();
+            this.txt_ContraseñaSQL = new System.Windows.Forms.TextBox();
+            this.txt_NombreUsuarioSQL = new System.Windows.Forms.TextBox();
+            this.txt_NombreInstaciaSQL = new System.Windows.Forms.TextBox();
+            this.btn_desconectarSQL = new System.Windows.Forms.Button();
+            this.btn_ConectarSQL = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btn_ejecutar_comando = new System.Windows.Forms.Button();
+            this.btn_limpiar_comando = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.tabControl2.SuspendLayout();
+            this.tp0_WindowsAuthentication.SuspendLayout();
+            this.tp1_SQLAuthentication.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -78,7 +92,7 @@ namespace Tarea_Corta_1
             // 
             // btn_Conectar_BD
             // 
-            this.btn_Conectar_BD.Location = new System.Drawing.Point(19, 66);
+            this.btn_Conectar_BD.Location = new System.Drawing.Point(25, 120);
             this.btn_Conectar_BD.Name = "btn_Conectar_BD";
             this.btn_Conectar_BD.Size = new System.Drawing.Size(80, 23);
             this.btn_Conectar_BD.TabIndex = 1;
@@ -90,23 +104,23 @@ namespace Tarea_Corta_1
             // 
             this.cbl_BD.FormattingEnabled = true;
             this.cbl_BD.HorizontalScrollbar = true;
-            this.cbl_BD.Location = new System.Drawing.Point(19, 27);
+            this.cbl_BD.Location = new System.Drawing.Point(22, 42);
             this.cbl_BD.Name = "cbl_BD";
             this.cbl_BD.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.cbl_BD.ScrollAlwaysVisible = true;
-            this.cbl_BD.Size = new System.Drawing.Size(177, 274);
+            this.cbl_BD.Size = new System.Drawing.Size(201, 199);
             this.cbl_BD.TabIndex = 2;
             // 
             // txt_NombreInstancia
             // 
-            this.txt_NombreInstancia.Location = new System.Drawing.Point(19, 30);
+            this.txt_NombreInstancia.Location = new System.Drawing.Point(25, 63);
             this.txt_NombreInstancia.Name = "txt_NombreInstancia";
             this.txt_NombreInstancia.Size = new System.Drawing.Size(177, 20);
             this.txt_NombreInstancia.TabIndex = 3;
             // 
             // btn_desconectar
             // 
-            this.btn_desconectar.Location = new System.Drawing.Point(116, 66);
+            this.btn_desconectar.Location = new System.Drawing.Point(115, 120);
             this.btn_desconectar.Name = "btn_desconectar";
             this.btn_desconectar.Size = new System.Drawing.Size(80, 23);
             this.btn_desconectar.TabIndex = 4;
@@ -118,24 +132,11 @@ namespace Tarea_Corta_1
             // 
             this.lbl_NombreInstancia.AutoSize = true;
             this.lbl_NombreInstancia.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_NombreInstancia.Location = new System.Drawing.Point(50, 11);
+            this.lbl_NombreInstancia.Location = new System.Drawing.Point(60, 36);
             this.lbl_NombreInstancia.Name = "lbl_NombreInstancia";
             this.lbl_NombreInstancia.Size = new System.Drawing.Size(113, 16);
             this.lbl_NombreInstancia.TabIndex = 5;
             this.lbl_NombreInstancia.Text = "Nombre Instancia";
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.lbl_NombreInstancia);
-            this.panel1.Controls.Add(this.btn_desconectar);
-            this.panel1.Controls.Add(this.txt_NombreInstancia);
-            this.panel1.Controls.Add(this.btn_Conectar_BD);
-            this.panel1.Location = new System.Drawing.Point(16, 38);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(221, 110);
-            this.panel1.TabIndex = 6;
             // 
             // panel2
             // 
@@ -144,15 +145,15 @@ namespace Tarea_Corta_1
             this.panel2.Controls.Add(this.l_lblSelectNinguna);
             this.panel2.Controls.Add(this.cbl_BD);
             this.panel2.Controls.Add(this.l_lbl_SelectTodas);
-            this.panel2.Location = new System.Drawing.Point(16, 154);
+            this.panel2.Location = new System.Drawing.Point(16, 297);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(221, 306);
+            this.panel2.Size = new System.Drawing.Size(239, 250);
             this.panel2.TabIndex = 7;
             // 
             // l_lblSelectNinguna
             // 
             this.l_lblSelectNinguna.AutoSize = true;
-            this.l_lblSelectNinguna.Location = new System.Drawing.Point(98, 6);
+            this.l_lblSelectNinguna.Location = new System.Drawing.Point(119, 10);
             this.l_lblSelectNinguna.Name = "l_lblSelectNinguna";
             this.l_lblSelectNinguna.Size = new System.Drawing.Size(104, 13);
             this.l_lblSelectNinguna.TabIndex = 9;
@@ -163,7 +164,7 @@ namespace Tarea_Corta_1
             // l_lbl_SelectTodas
             // 
             this.l_lbl_SelectTodas.AutoSize = true;
-            this.l_lbl_SelectTodas.Location = new System.Drawing.Point(3, 6);
+            this.l_lbl_SelectTodas.Location = new System.Drawing.Point(19, 10);
             this.l_lbl_SelectTodas.Name = "l_lbl_SelectTodas";
             this.l_lbl_SelectTodas.Size = new System.Drawing.Size(92, 13);
             this.l_lbl_SelectTodas.TabIndex = 8;
@@ -171,33 +172,35 @@ namespace Tarea_Corta_1
             this.l_lbl_SelectTodas.Text = "Seleccionar todas";
             this.l_lbl_SelectTodas.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.l_lbl_SelectTodas_LinkClicked);
             // 
-            // textBox1
+            // txt_CompiladorScript
             // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Location = new System.Drawing.Point(12, 26);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBox1.Size = new System.Drawing.Size(631, 196);
-            this.textBox1.TabIndex = 8;
+            this.txt_CompiladorScript.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txt_CompiladorScript.Location = new System.Drawing.Point(21, 59);
+            this.txt_CompiladorScript.Multiline = true;
+            this.txt_CompiladorScript.Name = "txt_CompiladorScript";
+            this.txt_CompiladorScript.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txt_CompiladorScript.Size = new System.Drawing.Size(631, 191);
+            this.txt_CompiladorScript.TabIndex = 8;
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.textBox1);
-            this.panel3.Location = new System.Drawing.Point(265, 105);
+            this.panel3.Controls.Add(this.btn_limpiar_comando);
+            this.panel3.Controls.Add(this.btn_ejecutar_comando);
+            this.panel3.Controls.Add(this.txt_CompiladorScript);
+            this.panel3.Location = new System.Drawing.Point(294, 46);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(660, 227);
+            this.panel3.Size = new System.Drawing.Size(660, 275);
             this.panel3.TabIndex = 9;
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Location = new System.Drawing.Point(265, 338);
+            this.tabControl1.Location = new System.Drawing.Point(294, 340);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(660, 122);
+            this.tabControl1.Size = new System.Drawing.Size(660, 207);
             this.tabControl1.TabIndex = 10;
             // 
             // tabPage1
@@ -206,7 +209,7 @@ namespace Tarea_Corta_1
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(652, 96);
+            this.tabPage1.Size = new System.Drawing.Size(652, 181);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Resultados";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -222,20 +225,155 @@ namespace Tarea_Corta_1
             this.txt_resultado_script_bd.Name = "txt_resultado_script_bd";
             this.txt_resultado_script_bd.ReadOnly = true;
             this.txt_resultado_script_bd.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txt_resultado_script_bd.Size = new System.Drawing.Size(649, 142);
+            this.txt_resultado_script_bd.Size = new System.Drawing.Size(649, 177);
             this.txt_resultado_script_bd.TabIndex = 9;
             this.txt_resultado_script_bd.Text = "Esperando conexion...";
+            // 
+            // tabControl2
+            // 
+            this.tabControl2.Controls.Add(this.tp0_WindowsAuthentication);
+            this.tabControl2.Controls.Add(this.tp1_SQLAuthentication);
+            this.tabControl2.Location = new System.Drawing.Point(19, 46);
+            this.tabControl2.Name = "tabControl2";
+            this.tabControl2.SelectedIndex = 0;
+            this.tabControl2.Size = new System.Drawing.Size(240, 236);
+            this.tabControl2.TabIndex = 11;
+            // 
+            // tp0_WindowsAuthentication
+            // 
+            this.tp0_WindowsAuthentication.BackColor = System.Drawing.Color.White;
+            this.tp0_WindowsAuthentication.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tp0_WindowsAuthentication.Controls.Add(this.lbl_NombreInstancia);
+            this.tp0_WindowsAuthentication.Controls.Add(this.txt_NombreInstancia);
+            this.tp0_WindowsAuthentication.Controls.Add(this.btn_Conectar_BD);
+            this.tp0_WindowsAuthentication.Controls.Add(this.btn_desconectar);
+            this.tp0_WindowsAuthentication.Location = new System.Drawing.Point(4, 22);
+            this.tp0_WindowsAuthentication.Name = "tp0_WindowsAuthentication";
+            this.tp0_WindowsAuthentication.Padding = new System.Windows.Forms.Padding(3);
+            this.tp0_WindowsAuthentication.Size = new System.Drawing.Size(232, 210);
+            this.tp0_WindowsAuthentication.TabIndex = 0;
+            this.tp0_WindowsAuthentication.Text = "Windows Authentication";
+            // 
+            // tp1_SQLAuthentication
+            // 
+            this.tp1_SQLAuthentication.BackColor = System.Drawing.Color.White;
+            this.tp1_SQLAuthentication.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tp1_SQLAuthentication.Controls.Add(this.txt_ContraseñaSQL);
+            this.tp1_SQLAuthentication.Controls.Add(this.txt_NombreUsuarioSQL);
+            this.tp1_SQLAuthentication.Controls.Add(this.txt_NombreInstaciaSQL);
+            this.tp1_SQLAuthentication.Controls.Add(this.btn_desconectarSQL);
+            this.tp1_SQLAuthentication.Controls.Add(this.btn_ConectarSQL);
+            this.tp1_SQLAuthentication.Controls.Add(this.label3);
+            this.tp1_SQLAuthentication.Controls.Add(this.label2);
+            this.tp1_SQLAuthentication.Controls.Add(this.label1);
+            this.tp1_SQLAuthentication.Location = new System.Drawing.Point(4, 22);
+            this.tp1_SQLAuthentication.Name = "tp1_SQLAuthentication";
+            this.tp1_SQLAuthentication.Padding = new System.Windows.Forms.Padding(3);
+            this.tp1_SQLAuthentication.Size = new System.Drawing.Size(232, 210);
+            this.tp1_SQLAuthentication.TabIndex = 1;
+            this.tp1_SQLAuthentication.Text = "SQL Authentication";
+            // 
+            // txt_ContraseñaSQL
+            // 
+            this.txt_ContraseñaSQL.Location = new System.Drawing.Point(42, 121);
+            this.txt_ContraseñaSQL.Name = "txt_ContraseñaSQL";
+            this.txt_ContraseñaSQL.Size = new System.Drawing.Size(145, 20);
+            this.txt_ContraseñaSQL.TabIndex = 13;
+            // 
+            // txt_NombreUsuarioSQL
+            // 
+            this.txt_NombreUsuarioSQL.Location = new System.Drawing.Point(42, 79);
+            this.txt_NombreUsuarioSQL.Name = "txt_NombreUsuarioSQL";
+            this.txt_NombreUsuarioSQL.Size = new System.Drawing.Size(145, 20);
+            this.txt_NombreUsuarioSQL.TabIndex = 12;
+            // 
+            // txt_NombreInstaciaSQL
+            // 
+            this.txt_NombreInstaciaSQL.Location = new System.Drawing.Point(42, 37);
+            this.txt_NombreInstaciaSQL.Name = "txt_NombreInstaciaSQL";
+            this.txt_NombreInstaciaSQL.Size = new System.Drawing.Size(145, 20);
+            this.txt_NombreInstaciaSQL.TabIndex = 11;
+            // 
+            // btn_desconectarSQL
+            // 
+            this.btn_desconectarSQL.Location = new System.Drawing.Point(132, 163);
+            this.btn_desconectarSQL.Name = "btn_desconectarSQL";
+            this.btn_desconectarSQL.Size = new System.Drawing.Size(85, 23);
+            this.btn_desconectarSQL.TabIndex = 10;
+            this.btn_desconectarSQL.Text = "Desconectar";
+            this.btn_desconectarSQL.UseVisualStyleBackColor = true;
+            this.btn_desconectarSQL.Click += new System.EventHandler(this.btn_desconectarSQL_Click);
+            // 
+            // btn_ConectarSQL
+            // 
+            this.btn_ConectarSQL.Location = new System.Drawing.Point(16, 163);
+            this.btn_ConectarSQL.Name = "btn_ConectarSQL";
+            this.btn_ConectarSQL.Size = new System.Drawing.Size(75, 23);
+            this.btn_ConectarSQL.TabIndex = 9;
+            this.btn_ConectarSQL.Text = "Conectar";
+            this.btn_ConectarSQL.UseVisualStyleBackColor = true;
+            this.btn_ConectarSQL.Click += new System.EventHandler(this.btn_ConectarSQL_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(64, 60);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(123, 16);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Nombre de usuario";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(74, 102);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(84, 16);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Constraseña";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(64, 18);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(113, 16);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Nombre Instancia";
+            // 
+            // btn_ejecutar_comando
+            // 
+            this.btn_ejecutar_comando.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btn_ejecutar_comando.Location = new System.Drawing.Point(21, 21);
+            this.btn_ejecutar_comando.Name = "btn_ejecutar_comando";
+            this.btn_ejecutar_comando.Size = new System.Drawing.Size(150, 23);
+            this.btn_ejecutar_comando.TabIndex = 9;
+            this.btn_ejecutar_comando.Text = "Ejecutar comando SQL";
+            this.btn_ejecutar_comando.UseVisualStyleBackColor = false;
+            // 
+            // btn_limpiar_comando
+            // 
+            this.btn_limpiar_comando.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.btn_limpiar_comando.Location = new System.Drawing.Point(204, 21);
+            this.btn_limpiar_comando.Name = "btn_limpiar_comando";
+            this.btn_limpiar_comando.Size = new System.Drawing.Size(150, 23);
+            this.btn_limpiar_comando.TabIndex = 10;
+            this.btn_limpiar_comando.Text = "Limpiar Comando";
+            this.btn_limpiar_comando.UseVisualStyleBackColor = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(973, 488);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(973, 587);
+            this.Controls.Add(this.tabControl2);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
@@ -243,8 +381,6 @@ namespace Tarea_Corta_1
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
@@ -252,6 +388,11 @@ namespace Tarea_Corta_1
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.tabControl2.ResumeLayout(false);
+            this.tp0_WindowsAuthentication.ResumeLayout(false);
+            this.tp0_WindowsAuthentication.PerformLayout();
+            this.tp1_SQLAuthentication.ResumeLayout(false);
+            this.tp1_SQLAuthentication.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -267,15 +408,27 @@ namespace Tarea_Corta_1
         private System.Windows.Forms.TextBox txt_NombreInstancia;
         private System.Windows.Forms.Button btn_desconectar;
         private System.Windows.Forms.Label lbl_NombreInstancia;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.LinkLabel l_lbl_SelectTodas;
         private System.Windows.Forms.LinkLabel l_lblSelectNinguna;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txt_CompiladorScript;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TextBox txt_resultado_script_bd;
+        private System.Windows.Forms.TabControl tabControl2;
+        private System.Windows.Forms.TabPage tp0_WindowsAuthentication;
+        private System.Windows.Forms.TabPage tp1_SQLAuthentication;
+        private System.Windows.Forms.TextBox txt_ContraseñaSQL;
+        private System.Windows.Forms.TextBox txt_NombreUsuarioSQL;
+        private System.Windows.Forms.TextBox txt_NombreInstaciaSQL;
+        private System.Windows.Forms.Button btn_desconectarSQL;
+        private System.Windows.Forms.Button btn_ConectarSQL;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btn_ejecutar_comando;
+        private System.Windows.Forms.Button btn_limpiar_comando;
     }
 }
 
