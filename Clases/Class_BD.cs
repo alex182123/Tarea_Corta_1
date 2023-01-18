@@ -132,7 +132,7 @@ namespace Clases
         {
             string nombre = "";
             
-            for (int j = 0; j < Lista_BD.Length-1; j++)
+            for (int j = 0; j < Lista_BD.Length; j++)
             {
                 try
                 {
