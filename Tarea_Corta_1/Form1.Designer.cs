@@ -353,6 +353,7 @@ namespace Tarea_Corta_1
             this.btn_ejecutar_comando.TabIndex = 9;
             this.btn_ejecutar_comando.Text = "Ejecutar comando SQL";
             this.btn_ejecutar_comando.UseVisualStyleBackColor = false;
+            this.btn_ejecutar_comando.Click += new System.EventHandler(this.btn_ejecutar_comando_Click);
             // 
             // btn_limpiar_comando
             // 
@@ -363,6 +364,7 @@ namespace Tarea_Corta_1
             this.btn_limpiar_comando.TabIndex = 10;
             this.btn_limpiar_comando.Text = "Limpiar Comando";
             this.btn_limpiar_comando.UseVisualStyleBackColor = false;
+            this.btn_limpiar_comando.Click += new System.EventHandler(this.btn_limpiar_comando_Click);
             // 
             // Form1
             // 

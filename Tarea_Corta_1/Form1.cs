@@ -12,6 +12,10 @@ namespace Tarea_Corta_1
 {
     public partial class Form1 : Form
     {
+        int tipoConexion;
+        string nombreInstancia;
+        string nombreUsuario;
+        string contrasenaSQL;
         public Form1()
         {
             InitializeComponent();
@@ -46,7 +50,9 @@ namespace Tarea_Corta_1
             {
                 try
                 {
-                    obj_Conexion.ConsultarBases(txt_NombreInstancia.Text,1);//Uso de metodo para consultar las base de datos de la instancia conectada
+                    tipoConexion = 1;
+                    nombreInstancia = txt_NombreInstancia.Text;
+                    obj_Conexion.ConsultarBases(nombreInstancia,tipoConexion);//Uso de metodo para consultar las base de datos de la instancia conectada
                     //Carga de los nombres de las bases de datos de la instancia al checkboxlist 
                     ((ListBox)cbl_BD).DataSource = obj_Conexion.ds;
                     ((ListBox)cbl_BD).DisplayMember = "name";
@@ -102,6 +108,8 @@ namespace Tarea_Corta_1
             txt_NombreInstancia.Enabled = true;
             btn_Conectar_BD.Enabled = true;
             //Otros
+            tipoConexion = 0;
+            nombreInstancia = "";
             ((ListBox)cbl_BD).DataSource = null; //Para limpiar el listcheckbox de las bd
             txt_resultado_script_bd.Text = ""; //Para limpiar el textbox de resultados
             txt_resultado_script_bd.Text = "Esperando conexion..."; //Cambio de mensaje para indicar que no se encuentra conectado a una instancia SQL
@@ -137,7 +145,11 @@ namespace Tarea_Corta_1
             {
                 try
                 {
-                    obj_Conexion.ConsultarBases(txt_NombreInstaciaSQL.Text,2,txt_NombreUsuarioSQL.Text,txt_ContraseñaSQL.Text);//Uso de metodo para consultar las base de datos de la instancia conectada
+                    nombreInstancia = txt_NombreInstaciaSQL.Text;
+                    nombreUsuario = txt_NombreUsuarioSQL.Text;
+                    contrasenaSQL = txt_ContraseñaSQL.Text;
+                    tipoConexion = 2;
+                    obj_Conexion.ConsultarBases(nombreInstancia,tipoConexion,nombreUsuario,contrasenaSQL);//Uso de metodo para consultar las base de datos de la instancia conectada
                     //Carga de los nombres de las bases de datos de la instancia al checkboxlist 
                     ((ListBox)cbl_BD).DataSource = obj_Conexion.ds;
                     ((ListBox)cbl_BD).DisplayMember = "name";
@@ -191,10 +203,43 @@ namespace Tarea_Corta_1
             txt_NombreInstancia.Enabled = true;
             btn_Conectar_BD.Enabled = true;
             //Otros
+            tipoConexion = 0;
+            nombreInstancia = "";
+            nombreUsuario = "";
+            contrasenaSQL = "";
             ((ListBox)cbl_BD).DataSource = null; //Para limpiar el listcheckbox de las bd
             txt_resultado_script_bd.Text = ""; //Para limpiar el textbox de resultados
             txt_resultado_script_bd.Text = "Esperando conexion..."; //Cambio de mensaje para indicar que no se encuentra conectado a una instancia SQL
             
+        }
+
+        private void btn_ejecutar_comando_Click(object sender, EventArgs e)
+        {
+            Class_BD obj_Conexion = new Class_BD();
+            string[] Lista_seleccionadas_DB = new string[cbl_BD.CheckedItems.Count];
+            int x = 0;
+            foreach (DataRowView Vista in cbl_BD.CheckedItems)
+            {
+                Lista_seleccionadas_DB[x] = Vista.Row[0].ToString();
+                x++;
+            }
+            for (int i = 0; i < cbl_BD.CheckedItems.Count; i++)
+            {
+                try
+                {
+                    obj_Conexion.EjecutarScript(nombreInstancia, tipoConexion, Lista_seleccionadas_DB, txt_CompiladorScript.Text, nombreUsuario, contrasenaSQL);
+                    txt_resultado_script_bd.Text += "Ejecucion Exitosa" + Environment.NewLine;
+                }
+                catch (Exception ex)
+                {
+                    txt_resultado_script_bd.Text += "Exploto la vara" + Environment.NewLine;
+                }
+            }
+        }
+
+        private void btn_limpiar_comando_Click(object sender, EventArgs e)
+        {
+            txt_CompiladorScript.Text = "";
         }
     }
 }

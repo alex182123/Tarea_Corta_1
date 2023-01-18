@@ -9,38 +9,77 @@ namespace Clases
 {
     public class Class_BD
     {
-        private string DataSource;
-        private string InitialCatalog;
-        private string IntegratedSecurity;
         private string str_conexion;
-        private string Id_User;
-        private string Password;
+        int x = 0;
         SqlConnection Conexion;
         public DataTable ds { get; } = new DataTable();
 
-        public void CrearStringConexionInicial(string NombreInstancia)
+        //public void CrearStringConexionInicial(string NombreInstancia,string nombreBD)
+        //{
+        //    DataSource = NombreInstancia;
+        //    //DataSource = "DESKTOP-7G4BD9C";
+        //    IntegratedSecurity = "SSPI";
+        //    if(nombreBD.Length != 0)
+        //    {
+        //        str_conexion = "Data Source =" + DataSource
+        //        + "; Initial Catalog =" + nombreBD
+        //        + "; Integrated Security=" + IntegratedSecurity;
+        //    }
+        //    else
+        //    {
+        //        str_conexion = "Data Source =" + DataSource
+        //         + "; Initial Catalog =" + "Master"
+        //         + "; Integrated Security=" + IntegratedSecurity;
+        //    }
+
+        //}
+
+        public void Crear_StringConexion(string NombreInstancia, string NombreUsuario, string Contrasena, string nombre_BD, int tipoConexion)
         {
-            DataSource = NombreInstancia;
-            //DataSource = "DESKTOP-7G4BD9C";
-            InitialCatalog = "Master";
-            IntegratedSecurity = "SSPI";
-            str_conexion = "Data Source =" + DataSource
-                + "; Initial Catalog =" + InitialCatalog
-                + "; Integrated Security=" + IntegratedSecurity;
+            if (tipoConexion == 1)//Si el tipo de conexion es igual a 1, entonces el string de conexion es de windows Authentication
+            {
+                if (nombre_BD.Length != 0)
+                {
+                    str_conexion = "Data Source =" + NombreInstancia
+                    + "; Initial Catalog =" + nombre_BD
+                    + "; Integrated Security=" + "SSPI";
+                }
+                else
+                {
+                    str_conexion = "Data Source =" + NombreInstancia
+                    + "; Initial Catalog =" + "Master"
+                    + "; Integrated Security=" + "SSPI";
+                }
+
+            }
+            else//Si el tipo de conexion es igual a 1, entonces el string de conexion es de SQL Server Authentication
+            {
+                if (nombre_BD.Length != 0)
+                {
+                    str_conexion = "Data Source =" + NombreInstancia
+                    + "; Initial Catalog =" + nombre_BD
+                    + "; User ID=" + NombreUsuario +
+                    "; Password=" + Contrasena;
+                }
+                else
+                {
+                    str_conexion = "Data Source =" + NombreInstancia
+                    + "; Initial Catalog =" + "Master"
+                    + "; User ID=" + NombreUsuario +
+                    "; Password=" + Contrasena;
+                }
+            }
         }
-        public void CrearStringSQLAuthentication(string NombreInstancia, string NombreUsuario, string Contrasena)
-        {
-            DataSource = NombreInstancia;
-            //DataSource = "DESKTOP-7G4BD9C";
-            InitialCatalog = "Master";
-            IntegratedSecurity = "SSPI";
-            Id_User = NombreUsuario;
-            Password = Contrasena;
-            str_conexion = "Data Source =" + DataSource
-                + "; Initial Catalog =" + InitialCatalog
-                + "; User ID=" + Id_User +
-                "; Password=" + Password;
-        }
+        //public void CrearStringSQLAuthentication(string NombreInstancia, string NombreUsuario, string Contrasena)
+        //{
+        //    DataSource = NombreInstancia;
+        //    //DataSource = "DESKTOP-7G4BD9C";
+        //    InitialCatalog = "Master";
+        //    IntegratedSecurity = "SSPI";
+        //    Id_User = NombreUsuario;
+        //    Password = Contrasena;
+
+        //}
         public void AbrirConexion()
         {
             try
@@ -48,11 +87,11 @@ namespace Clases
                 Conexion = new SqlConnection(str_conexion);
                 Conexion.Open();
                 //Conexion.
-            }catch(Exception ex)
+            } catch (Exception ex)
             {
                 throw new Exception(ex.Message.ToString());
             }
-            
+
         }
         public void CerrarConexion()
         {
@@ -64,41 +103,21 @@ namespace Clases
             {
                 throw new Exception(ex.Message.ToString());
             }
-            
+
         }
         public void ConsultarBases(string NombreInstancia, int tipoconexion, string nombreusuario = "", string contrasena = "")
         {
             try
             {
-                if (tipoconexion == 1)
-                {
-                    CrearStringConexionInicial(NombreInstancia);
-                }
-                else {
-                    CrearStringSQLAuthentication(NombreInstancia,nombreusuario,contrasena);
-                }
-                if(ds.Rows.Count > 0)
+                Crear_StringConexion(NombreInstancia, nombreusuario, contrasena, "", tipoconexion);
+                if (ds.Rows.Count > 0)
                 {
                     ds.Clear();
                 }
                 AbrirConexion();
-                SqlCommand cmd = new SqlCommand("SELECT name FROM sys.databases where database_id >= 5",Conexion);
+                SqlCommand cmd = new SqlCommand("SELECT name FROM sys.databases where database_id >= 5", Conexion);
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 da.Fill(ds);
-                //SqlDataReader dr = cmd.ExecuteReader();
-                //if (dr.Read())
-                //{
-                //    string lista = "";
-                //    for (int x = 0; x < dr.FieldCount; x++)
-                //    {
-                //        lista += dr[x] + "\n";
-                //    }
-                //    return dr["name"].ToString();
-                //}
-                //else
-                //{
-                //    return "No funciono";
-                //}
             }
             catch (Exception ex)
             {
@@ -109,6 +128,32 @@ namespace Clases
                 CerrarConexion();
             }
         }
-      
+        public void EjecutarScript(string NombreInstancia, int tipoconexion, string[] Lista_BD, string Comando, string nombreusuario = "", string contrasena = "")
+        {
+            string nombre = "";
+            
+            for (int j = 0; j < Lista_BD.Length-1; j++)
+            {
+                try
+                {
+                    nombre = "";
+                    nombre = Lista_BD[x];
+                    Crear_StringConexion(NombreInstancia, nombreusuario, contrasena, nombre, tipoconexion);
+                    AbrirConexion();
+                    //Conexion.ChangeDatabase(nombre);
+                    SqlCommand cmd = new SqlCommand(Comando, Conexion);
+                    x++;
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Hola");
+                }
+                finally
+                {
+                    CerrarConexion();
+                }
+            }
+        }
     }
 }
