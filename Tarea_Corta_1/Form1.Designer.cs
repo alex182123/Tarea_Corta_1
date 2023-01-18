@@ -40,8 +40,9 @@ namespace Tarea_Corta_1
             this.panel2 = new System.Windows.Forms.Panel();
             this.l_lblSelectNinguna = new System.Windows.Forms.LinkLabel();
             this.l_lbl_SelectTodas = new System.Windows.Forms.LinkLabel();
-            this.txt_CompiladorScript = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btn_limpiar_comando = new System.Windows.Forms.Button();
+            this.btn_ejecutar_comando = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.txt_resultado_script_bd = new System.Windows.Forms.TextBox();
@@ -56,8 +57,8 @@ namespace Tarea_Corta_1
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.btn_ejecutar_comando = new System.Windows.Forms.Button();
-            this.btn_limpiar_comando = new System.Windows.Forms.Button();
+            this.btn_limpiar_Resultados = new System.Windows.Forms.Button();
+            this.rtxt_CompiladorScript = new System.Windows.Forms.RichTextBox();
             this.menuStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -172,27 +173,40 @@ namespace Tarea_Corta_1
             this.l_lbl_SelectTodas.Text = "Seleccionar todas";
             this.l_lbl_SelectTodas.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.l_lbl_SelectTodas_LinkClicked);
             // 
-            // txt_CompiladorScript
-            // 
-            this.txt_CompiladorScript.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txt_CompiladorScript.Location = new System.Drawing.Point(21, 59);
-            this.txt_CompiladorScript.Multiline = true;
-            this.txt_CompiladorScript.Name = "txt_CompiladorScript";
-            this.txt_CompiladorScript.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txt_CompiladorScript.Size = new System.Drawing.Size(631, 191);
-            this.txt_CompiladorScript.TabIndex = 8;
-            // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.rtxt_CompiladorScript);
+            this.panel3.Controls.Add(this.btn_limpiar_Resultados);
             this.panel3.Controls.Add(this.btn_limpiar_comando);
             this.panel3.Controls.Add(this.btn_ejecutar_comando);
-            this.panel3.Controls.Add(this.txt_CompiladorScript);
             this.panel3.Location = new System.Drawing.Point(294, 46);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(660, 275);
             this.panel3.TabIndex = 9;
+            // 
+            // btn_limpiar_comando
+            // 
+            this.btn_limpiar_comando.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.btn_limpiar_comando.Location = new System.Drawing.Point(313, 21);
+            this.btn_limpiar_comando.Name = "btn_limpiar_comando";
+            this.btn_limpiar_comando.Size = new System.Drawing.Size(150, 23);
+            this.btn_limpiar_comando.TabIndex = 10;
+            this.btn_limpiar_comando.Text = "Limpiar Comando";
+            this.btn_limpiar_comando.UseVisualStyleBackColor = false;
+            this.btn_limpiar_comando.Click += new System.EventHandler(this.btn_limpiar_comando_Click);
+            // 
+            // btn_ejecutar_comando
+            // 
+            this.btn_ejecutar_comando.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btn_ejecutar_comando.Location = new System.Drawing.Point(125, 21);
+            this.btn_ejecutar_comando.Name = "btn_ejecutar_comando";
+            this.btn_ejecutar_comando.Size = new System.Drawing.Size(150, 23);
+            this.btn_ejecutar_comando.TabIndex = 9;
+            this.btn_ejecutar_comando.Text = "Ejecutar comando SQL";
+            this.btn_ejecutar_comando.UseVisualStyleBackColor = false;
+            this.btn_ejecutar_comando.Click += new System.EventHandler(this.btn_ejecutar_comando_Click);
             // 
             // tabControl1
             // 
@@ -277,6 +291,7 @@ namespace Tarea_Corta_1
             // 
             this.txt_ContraseñaSQL.Location = new System.Drawing.Point(42, 121);
             this.txt_ContraseñaSQL.Name = "txt_ContraseñaSQL";
+            this.txt_ContraseñaSQL.PasswordChar = '*';
             this.txt_ContraseñaSQL.Size = new System.Drawing.Size(145, 20);
             this.txt_ContraseñaSQL.TabIndex = 13;
             // 
@@ -344,27 +359,25 @@ namespace Tarea_Corta_1
             this.label1.TabIndex = 6;
             this.label1.Text = "Nombre Instancia";
             // 
-            // btn_ejecutar_comando
+            // btn_limpiar_Resultados
             // 
-            this.btn_ejecutar_comando.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.btn_ejecutar_comando.Location = new System.Drawing.Point(21, 21);
-            this.btn_ejecutar_comando.Name = "btn_ejecutar_comando";
-            this.btn_ejecutar_comando.Size = new System.Drawing.Size(150, 23);
-            this.btn_ejecutar_comando.TabIndex = 9;
-            this.btn_ejecutar_comando.Text = "Ejecutar comando SQL";
-            this.btn_ejecutar_comando.UseVisualStyleBackColor = false;
-            this.btn_ejecutar_comando.Click += new System.EventHandler(this.btn_ejecutar_comando_Click);
+            this.btn_limpiar_Resultados.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btn_limpiar_Resultados.Location = new System.Drawing.Point(508, 21);
+            this.btn_limpiar_Resultados.Name = "btn_limpiar_Resultados";
+            this.btn_limpiar_Resultados.Size = new System.Drawing.Size(122, 23);
+            this.btn_limpiar_Resultados.TabIndex = 11;
+            this.btn_limpiar_Resultados.Text = "Limpiar Resultados";
+            this.btn_limpiar_Resultados.UseVisualStyleBackColor = false;
             // 
-            // btn_limpiar_comando
+            // rtxt_CompiladorScript
             // 
-            this.btn_limpiar_comando.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.btn_limpiar_comando.Location = new System.Drawing.Point(204, 21);
-            this.btn_limpiar_comando.Name = "btn_limpiar_comando";
-            this.btn_limpiar_comando.Size = new System.Drawing.Size(150, 23);
-            this.btn_limpiar_comando.TabIndex = 10;
-            this.btn_limpiar_comando.Text = "Limpiar Comando";
-            this.btn_limpiar_comando.UseVisualStyleBackColor = false;
-            this.btn_limpiar_comando.Click += new System.EventHandler(this.btn_limpiar_comando_Click);
+            this.rtxt_CompiladorScript.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtxt_CompiladorScript.Location = new System.Drawing.Point(23, 59);
+            this.rtxt_CompiladorScript.Name = "rtxt_CompiladorScript";
+            this.rtxt_CompiladorScript.Size = new System.Drawing.Size(607, 186);
+            this.rtxt_CompiladorScript.TabIndex = 12;
+            this.rtxt_CompiladorScript.Text = "";
+            this.rtxt_CompiladorScript.TextChanged += new System.EventHandler(this.rtxt_CompiladorScript_TextChanged);
             // 
             // Form1
             // 
@@ -386,7 +399,6 @@ namespace Tarea_Corta_1
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -413,7 +425,6 @@ namespace Tarea_Corta_1
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.LinkLabel l_lbl_SelectTodas;
         private System.Windows.Forms.LinkLabel l_lblSelectNinguna;
-        private System.Windows.Forms.TextBox txt_CompiladorScript;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
@@ -431,6 +442,8 @@ namespace Tarea_Corta_1
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btn_ejecutar_comando;
         private System.Windows.Forms.Button btn_limpiar_comando;
+        private System.Windows.Forms.Button btn_limpiar_Resultados;
+        private System.Windows.Forms.RichTextBox rtxt_CompiladorScript;
     }
 }
 

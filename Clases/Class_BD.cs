@@ -89,7 +89,7 @@ namespace Clases
                 //Conexion.
             } catch (Exception ex)
             {
-                throw new Exception(ex.Message.ToString());
+                throw new Exception("No ha sido posible lograr la conexión con los datos indicados, por favor intente de nuevo.");
             }
 
         }
@@ -115,7 +115,7 @@ namespace Clases
                     ds.Clear();
                 }
                 AbrirConexion();
-                SqlCommand cmd = new SqlCommand("SELECT name FROM sys.databases where database_id >= 5", Conexion);
+                SqlCommand cmd = new SqlCommand("SELECT name FROM sys.databases where database_id >= 5 and database_id <> 12", Conexion);
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 da.Fill(ds);
             }
@@ -128,31 +128,24 @@ namespace Clases
                 CerrarConexion();
             }
         }
-        public void EjecutarScript(string NombreInstancia, int tipoconexion, string[] Lista_BD, string Comando, string nombreusuario = "", string contrasena = "")
+        public void EjecutarScript(string NombreInstancia, int tipoconexion, string nombre, string Comando, string nombreusuario = "", string contrasena = "")
         {
-            string nombre = "";
-            
-            for (int j = 0; j < Lista_BD.Length; j++)
+            try
             {
-                try
-                {
-                    nombre = "";
-                    nombre = Lista_BD[x];
-                    Crear_StringConexion(NombreInstancia, nombreusuario, contrasena, nombre, tipoconexion);
-                    AbrirConexion();
-                    //Conexion.ChangeDatabase(nombre);
-                    SqlCommand cmd = new SqlCommand(Comando, Conexion);
-                    x++;
-                    cmd.ExecuteNonQuery();
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception("Hola");
-                }
-                finally
-                {
-                    CerrarConexion();
-                }
+                Crear_StringConexion(NombreInstancia, nombreusuario, contrasena, nombre, tipoconexion);
+                AbrirConexion();
+                //Conexion.ChangeDatabase(nombre);
+                SqlCommand cmd = new SqlCommand(Comando, Conexion);
+                x++;
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("No se pudo ejectutar el script en la base de datos : " + nombre);
+            }
+            finally
+            {
+                CerrarConexion();
             }
         }
     }

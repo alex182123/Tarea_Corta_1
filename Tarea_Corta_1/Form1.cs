@@ -16,6 +16,7 @@ namespace Tarea_Corta_1
         string nombreInstancia;
         string nombreUsuario;
         string contrasenaSQL;
+        string [] palabras_reservadas_sql = new string[] {"where","into","insert","from","select"};
         public Form1()
         {
             InitializeComponent();
@@ -31,11 +32,13 @@ namespace Tarea_Corta_1
             //Desactivar opciones de edicion de comandos sql
             cbl_BD.Enabled = false;
             btn_desconectar.Enabled = false;
+            btn_desconectarSQL.Enabled = false;
             l_lblSelectNinguna.Enabled = false;
             l_lbl_SelectTodas.Enabled = false;
-            txt_CompiladorScript.Enabled = false;
+            rtxt_CompiladorScript.Enabled = false;
             btn_ejecutar_comando.Enabled = false;
             btn_limpiar_comando.Enabled = false;
+            btn_limpiar_Resultados.Enabled = false;
         }
 
         private void btn_Conectar_BD_Click(object sender, EventArgs e)
@@ -68,7 +71,7 @@ namespace Tarea_Corta_1
                     cbl_BD.Enabled = true;
                     l_lblSelectNinguna.Enabled = true;
                     l_lbl_SelectTodas.Enabled = true;
-                    txt_CompiladorScript.Enabled = true;
+                    rtxt_CompiladorScript.Enabled = true;
                     btn_ejecutar_comando.Enabled = true;
                     btn_limpiar_comando.Enabled = true;
                     //Desactivar opciones Windows Authentication
@@ -98,7 +101,7 @@ namespace Tarea_Corta_1
             btn_desconectarSQL.Enabled = false;
             btn_ejecutar_comando.Enabled = false;
             btn_limpiar_comando.Enabled = false;
-            txt_CompiladorScript.Enabled = false;
+            rtxt_CompiladorScript.Enabled = false;
             //Activar opciones de SQL Server Authentication
             btn_ConectarSQL.Enabled = true;
             txt_NombreInstaciaSQL.Enabled = true;
@@ -159,7 +162,7 @@ namespace Tarea_Corta_1
                     cbl_BD.Enabled = true;
                     l_lblSelectNinguna.Enabled = true;
                     l_lbl_SelectTodas.Enabled = true;
-                    txt_CompiladorScript.Enabled = true;
+                    rtxt_CompiladorScript.Enabled = true;
                     btn_ejecutar_comando.Enabled = true;
                     btn_limpiar_comando.Enabled = true;
                     //Desactivar opciones de SQL server authentication
@@ -193,7 +196,7 @@ namespace Tarea_Corta_1
             btn_desconectarSQL.Enabled = false;
             btn_ejecutar_comando.Enabled = false;
             btn_limpiar_comando.Enabled = false;
-            txt_CompiladorScript.Enabled = false;
+            rtxt_CompiladorScript.Enabled = false;
             //Activar opciones de SQL Server Authentication
             btn_ConectarSQL.Enabled = true;
             txt_NombreInstaciaSQL.Enabled = true;
@@ -215,31 +218,66 @@ namespace Tarea_Corta_1
 
         private void btn_ejecutar_comando_Click(object sender, EventArgs e)
         {
-            Class_BD obj_Conexion = new Class_BD();
-            string[] Lista_seleccionadas_DB = new string[cbl_BD.CheckedItems.Count];
-            int x = 0;
-            foreach (DataRowView Vista in cbl_BD.CheckedItems)
+            if (cbl_BD.CheckedItems.Count != 0)
             {
-                Lista_seleccionadas_DB[x] = Vista.Row[0].ToString();
-                x++;
+                Class_BD obj_Conexion = new Class_BD();
+                string[] Lista_seleccionadas_DB = new string[cbl_BD.CheckedItems.Count];
+                int x = 0;
+                foreach (DataRowView Vista in cbl_BD.CheckedItems)
+                {
+                    Lista_seleccionadas_DB[x] = Vista.Row[0].ToString();
+                    x++;
+                }
+                for (int i = 0; i < cbl_BD.CheckedItems.Count; i++)
+                {
+                    try
+                    {
+                        obj_Conexion.EjecutarScript(nombreInstancia, tipoConexion, Lista_seleccionadas_DB[i], rtxt_CompiladorScript.Text, nombreUsuario, contrasenaSQL);
+                        txt_resultado_script_bd.Text += "Ejecucion Exitosa" + Environment.NewLine;
+                    }
+                    catch (Exception ex)
+                    {
+                        txt_resultado_script_bd.Text += ex.Message + Environment.NewLine;
+                    }
+                }
             }
-            for (int i = 0; i < cbl_BD.CheckedItems.Count; i++)
+            else
             {
-                try
-                {
-                    obj_Conexion.EjecutarScript(nombreInstancia, tipoConexion, Lista_seleccionadas_DB, txt_CompiladorScript.Text, nombreUsuario, contrasenaSQL);
-                    txt_resultado_script_bd.Text += "Ejecucion Exitosa" + Environment.NewLine;
-                }
-                catch (Exception ex)
-                {
-                    txt_resultado_script_bd.Text += "Exploto la vara" + Environment.NewLine;
-                }
+                MessageBox.Show(null,"Debe seleccionar almenos una base de datos","Debe seleccionar una base de datos",MessageBoxButtons.OK,MessageBoxIcon.Warning);
             }
+            
         }
 
         private void btn_limpiar_comando_Click(object sender, EventArgs e)
         {
-            txt_CompiladorScript.Text = "";
+            rtxt_CompiladorScript.Text = "";
+        }
+
+
+
+        private void rtxt_CompiladorScript_TextChanged(object sender, EventArgs e)
+        {
+            var palabras = this.rtxt_CompiladorScript.Text.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            var resultado = from b in palabras_reservadas_sql
+                            from c in palabras
+                            where c == b
+                            select b;
+            int inicio = 0;
+            foreach (var item in resultado)
+            {
+                inicio = this.rtxt_CompiladorScript.Text.IndexOf(item, inicio);
+                if(inicio == -1)
+                {
+                    inicio = 0;
+                }
+                this.rtxt_CompiladorScript.Select(inicio, item.Length);
+                this.rtxt_CompiladorScript.SelectionColor = Color.Blue;
+                this.rtxt_CompiladorScript.SelectionStart = this.rtxt_CompiladorScript.Text.Length;
+                inicio++;
+            }
+
+            this.rtxt_CompiladorScript.SelectionColor = Color.Black;
+            this.rtxt_CompiladorScript.SelectionStart = this.rtxt_CompiladorScript.Text.Length;
         }
     }
 }
