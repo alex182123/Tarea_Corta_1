@@ -225,6 +225,7 @@ namespace Tarea_Corta_1
                     string[] Lista_seleccionadas_DB = new string[cbl_BD.CheckedItems.Count];
                     int x = 0;
                     int filasafectadas;
+                    txt_resultado_script_bd.Text = "";
                     foreach (DataRowView Vista in cbl_BD.CheckedItems)
                     {
                         Lista_seleccionadas_DB[x] = Vista.Row[0].ToString();
@@ -240,7 +241,7 @@ namespace Tarea_Corta_1
                         }
                         catch (Exception ex)
                         {
-                            txt_resultado_script_bd.Text += ex.Message + Environment.NewLine;
+                            txt_resultado_script_bd.Text += ex.Message;
                         }
                     }
                 }
@@ -256,14 +257,6 @@ namespace Tarea_Corta_1
             
             
         }
-
-        private void btn_limpiar_comando_Click(object sender, EventArgs e)
-        {
-            rtxt_CompiladorScript.Text = "";
-        }
-
-
-
         private void rtxt_CompiladorScript_TextChanged(object sender, EventArgs e)
         {
             var palabras = this.rtxt_CompiladorScript.Text.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
@@ -289,5 +282,9 @@ namespace Tarea_Corta_1
             this.rtxt_CompiladorScript.SelectionStart = this.rtxt_CompiladorScript.Text.Length;
         }
 
+        private void btn_limpiar_comando_Click(object sender, EventArgs e)
+        {
+            rtxt_CompiladorScript.Text = "";
+        }
     }
 }

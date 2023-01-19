@@ -141,7 +141,7 @@ namespace Clases
             }
             catch (Exception ex)
             {
-                throw new Exception("Base de datos : " + Environment.NewLine + "Excepcion al ejecutar una instruccion o un proceso por lotes Transact-SQL." + nombre);
+                throw new Exception("Base de datos : " + Environment.NewLine + "Excepcion al ejecutar una instruccion o un proceso por lotes Transact-SQL." + Environment.NewLine);
             }
             finally
             {

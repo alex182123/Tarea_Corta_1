@@ -59,6 +59,7 @@ namespace Tarea_Corta_1
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -177,6 +178,7 @@ namespace Tarea_Corta_1
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.label5);
             this.panel3.Controls.Add(this.rtxt_CompiladorScript);
             this.panel3.Controls.Add(this.btn_limpiar_comando);
             this.panel3.Controls.Add(this.btn_ejecutar_comando);
@@ -198,7 +200,7 @@ namespace Tarea_Corta_1
             // btn_limpiar_comando
             // 
             this.btn_limpiar_comando.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.btn_limpiar_comando.Location = new System.Drawing.Point(170, 7);
+            this.btn_limpiar_comando.Location = new System.Drawing.Point(255, 7);
             this.btn_limpiar_comando.Name = "btn_limpiar_comando";
             this.btn_limpiar_comando.Size = new System.Drawing.Size(150, 23);
             this.btn_limpiar_comando.TabIndex = 10;
@@ -209,7 +211,7 @@ namespace Tarea_Corta_1
             // btn_ejecutar_comando
             // 
             this.btn_ejecutar_comando.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.btn_ejecutar_comando.Location = new System.Drawing.Point(14, 7);
+            this.btn_ejecutar_comando.Location = new System.Drawing.Point(99, 7);
             this.btn_ejecutar_comando.Name = "btn_ejecutar_comando";
             this.btn_ejecutar_comando.Size = new System.Drawing.Size(150, 23);
             this.btn_ejecutar_comando.TabIndex = 9;
@@ -379,6 +381,16 @@ namespace Tarea_Corta_1
             this.label1.TabIndex = 6;
             this.label1.Text = "Nombre Instancia";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(11, 10);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(71, 16);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Controles :";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -399,6 +411,7 @@ namespace Tarea_Corta_1
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -444,6 +457,7 @@ namespace Tarea_Corta_1
         private System.Windows.Forms.Button btn_limpiar_comando;
         private System.Windows.Forms.RichTextBox rtxt_CompiladorScript;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
     }
 }
 
