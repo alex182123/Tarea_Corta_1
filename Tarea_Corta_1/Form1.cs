@@ -24,12 +24,15 @@ namespace Tarea_Corta_1
 
         private void archivoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            opf_Menu_Script.ShowDialog();
+            
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             //Desactivar opciones de edicion de comandos sql
+            opf_Menu_Script.Filter = "SQL Server Files (*.sql) |*.sql";
+            cargarArchivoSQLToolStripMenuItem.Enabled = false;
+            btn_Copiar.Enabled = false;
             cbl_BD.Enabled = false;
             btn_desconectar.Enabled = false;
             btn_desconectarSQL.Enabled = false;
@@ -38,6 +41,8 @@ namespace Tarea_Corta_1
             rtxt_CompiladorScript.Enabled = false;
             btn_ejecutar_comando.Enabled = false;
             btn_limpiar_comando.Enabled = false;
+            tp_btn_ejecutarComando.SetToolTip(btn_ejecutar_comando,"Ejecutar script sql digitado en la parte inferior");
+
         }
 
         private void btn_Conectar_BD_Click(object sender, EventArgs e)
@@ -66,6 +71,8 @@ namespace Tarea_Corta_1
                     txt_NombreInstaciaSQL.Enabled = false;
                     txt_NombreUsuarioSQL.Enabled = false;
                     //Activar opciones Windows Authentication
+                    cargarArchivoSQLToolStripMenuItem.Enabled = true;
+                    btn_Copiar.Enabled = true;
                     btn_desconectar.Enabled = true;
                     cbl_BD.Enabled = true;
                     l_lblSelectNinguna.Enabled = true;
@@ -95,12 +102,14 @@ namespace Tarea_Corta_1
             //Desactivar opciones de Windows Authentication
             btn_desconectar.Enabled = false;
             //Desactivar opciones de SQL Server Authentication
+            cargarArchivoSQLToolStripMenuItem.Enabled = false;
             l_lblSelectNinguna.Enabled = false;
             l_lbl_SelectTodas.Enabled = false;
             btn_desconectarSQL.Enabled = false;
             btn_ejecutar_comando.Enabled = false;
             btn_limpiar_comando.Enabled = false;
             rtxt_CompiladorScript.Enabled = false;
+            btn_Copiar.Enabled = false;
             //Activar opciones de SQL Server Authentication
             btn_ConectarSQL.Enabled = true;
             txt_NombreInstaciaSQL.Enabled = true;
@@ -157,6 +166,8 @@ namespace Tarea_Corta_1
                     ((ListBox)cbl_BD).DisplayMember = "name";
                     ((ListBox)cbl_BD).ValueMember = "name";
                     //Activar opciones de SQL server authentication
+                    cargarArchivoSQLToolStripMenuItem.Enabled = true;
+                    btn_Copiar.Enabled = true;
                     btn_desconectarSQL.Enabled = true;
                     cbl_BD.Enabled = true;
                     l_lblSelectNinguna.Enabled = true;
@@ -188,14 +199,16 @@ namespace Tarea_Corta_1
         private void btn_desconectarSQL_Click(object sender, EventArgs e)
         {
             //Desactivar opciones de Windows Authentication
-            
+
             //Desactivar opciones de SQL Server Authentication
+            cargarArchivoSQLToolStripMenuItem.Enabled = false;
             l_lblSelectNinguna.Enabled = false;
             l_lbl_SelectTodas.Enabled = false;
             btn_desconectarSQL.Enabled = false;
             btn_ejecutar_comando.Enabled = false;
             btn_limpiar_comando.Enabled = false;
             rtxt_CompiladorScript.Enabled = false;
+            btn_Copiar.Enabled = false;
             //Activar opciones de SQL Server Authentication
             btn_ConectarSQL.Enabled = true;
             txt_NombreInstaciaSQL.Enabled = true;
@@ -262,7 +275,7 @@ namespace Tarea_Corta_1
             var palabras = this.rtxt_CompiladorScript.Text.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
             var resultado = from b in palabras_reservadas_sql
                             from c in palabras
-                            where c == b
+                            where c == b || c == b.ToUpper()
                             select b;
             int inicio = 0;
             foreach (var item in resultado)
@@ -285,6 +298,27 @@ namespace Tarea_Corta_1
         private void btn_limpiar_comando_Click(object sender, EventArgs e)
         {
             rtxt_CompiladorScript.Text = "";
+        }
+
+        private void btn_Copiar_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(rtxt_CompiladorScript.Text);
+        }
+
+        private void cargarArchivoSQLToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(opf_Menu_Script.ShowDialog() == DialogResult.OK)
+            {
+                rtxt_CompiladorScript.LoadFile(opf_Menu_Script.FileName,RichTextBoxStreamType.PlainText);
+            }else
+            {
+
+            }
+        }
+
+        private void guardarArchivoSQLToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
