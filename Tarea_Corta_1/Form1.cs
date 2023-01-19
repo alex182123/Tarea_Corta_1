@@ -265,7 +265,7 @@ namespace Tarea_Corta_1
             }
             else
             {
-                MessageBox.Show(null, "Por favor digite un mando válido.", "Ingresar comando valido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(null, "Por favor digite un comando válido.", "Ingresar comando valido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             
             

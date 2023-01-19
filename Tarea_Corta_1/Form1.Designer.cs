@@ -44,14 +44,14 @@ namespace Tarea_Corta_1
             this.l_lbl_SelectTodas = new System.Windows.Forms.LinkLabel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btn_Copiar = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lbl_controles = new System.Windows.Forms.Label();
             this.rtxt_CompiladorScript = new System.Windows.Forms.RichTextBox();
             this.btn_limpiar_comando = new System.Windows.Forms.Button();
             this.btn_ejecutar_comando = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.txt_resultado_script_bd = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lbl_resultadosScript = new System.Windows.Forms.Label();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tp0_WindowsAuthentication = new System.Windows.Forms.TabPage();
             this.tp1_SQLAuthentication = new System.Windows.Forms.TabPage();
@@ -97,7 +97,7 @@ namespace Tarea_Corta_1
             // cargarArchivoSQLToolStripMenuItem
             // 
             this.cargarArchivoSQLToolStripMenuItem.Name = "cargarArchivoSQLToolStripMenuItem";
-            this.cargarArchivoSQLToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.cargarArchivoSQLToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.cargarArchivoSQLToolStripMenuItem.Text = "Cargar archivo SQL";
             this.cargarArchivoSQLToolStripMenuItem.Click += new System.EventHandler(this.cargarArchivoSQLToolStripMenuItem_Click);
             // 
@@ -192,7 +192,7 @@ namespace Tarea_Corta_1
             this.panel3.BackColor = System.Drawing.Color.White;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel3.Controls.Add(this.btn_Copiar);
-            this.panel3.Controls.Add(this.label5);
+            this.panel3.Controls.Add(this.lbl_controles);
             this.panel3.Controls.Add(this.rtxt_CompiladorScript);
             this.panel3.Controls.Add(this.btn_limpiar_comando);
             this.panel3.Controls.Add(this.btn_ejecutar_comando);
@@ -213,15 +213,15 @@ namespace Tarea_Corta_1
             this.btn_Copiar.UseVisualStyleBackColor = false;
             this.btn_Copiar.Click += new System.EventHandler(this.btn_Copiar_Click);
             // 
-            // label5
+            // lbl_controles
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(11, 10);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(71, 16);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "Controles :";
+            this.lbl_controles.AutoSize = true;
+            this.lbl_controles.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_controles.Location = new System.Drawing.Point(11, 10);
+            this.lbl_controles.Name = "lbl_controles";
+            this.lbl_controles.Size = new System.Drawing.Size(71, 16);
+            this.lbl_controles.TabIndex = 11;
+            this.lbl_controles.Text = "Controles :";
             // 
             // rtxt_CompiladorScript
             // 
@@ -270,7 +270,7 @@ namespace Tarea_Corta_1
             // 
             this.tabPage1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tabPage1.Controls.Add(this.txt_resultado_script_bd);
-            this.tabPage1.Controls.Add(this.label4);
+            this.tabPage1.Controls.Add(this.lbl_resultadosScript);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -294,15 +294,15 @@ namespace Tarea_Corta_1
             this.txt_resultado_script_bd.TabIndex = 9;
             this.txt_resultado_script_bd.Text = "Esperando conexion...";
             // 
-            // label4
+            // lbl_resultadosScript
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(2, 13);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(185, 18);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "Resultados de la ejecucion";
+            this.lbl_resultadosScript.AutoSize = true;
+            this.lbl_resultadosScript.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_resultadosScript.Location = new System.Drawing.Point(2, 13);
+            this.lbl_resultadosScript.Name = "lbl_resultadosScript";
+            this.lbl_resultadosScript.Size = new System.Drawing.Size(185, 18);
+            this.lbl_resultadosScript.TabIndex = 10;
+            this.lbl_resultadosScript.Text = "Resultados de la ejecucion";
             // 
             // tabControl2
             // 
@@ -485,8 +485,8 @@ namespace Tarea_Corta_1
         private System.Windows.Forms.Button btn_ejecutar_comando;
         private System.Windows.Forms.Button btn_limpiar_comando;
         private System.Windows.Forms.RichTextBox rtxt_CompiladorScript;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lbl_resultadosScript;
+        private System.Windows.Forms.Label lbl_controles;
         private System.Windows.Forms.ToolTip tp_btn_ejecutarComando;
         private System.Windows.Forms.Button btn_Copiar;
         private System.Windows.Forms.ToolStripMenuItem cargarArchivoSQLToolStripMenuItem;
