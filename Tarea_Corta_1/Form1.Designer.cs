@@ -41,10 +41,12 @@ namespace Tarea_Corta_1
             this.l_lblSelectNinguna = new System.Windows.Forms.LinkLabel();
             this.l_lbl_SelectTodas = new System.Windows.Forms.LinkLabel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.rtxt_CompiladorScript = new System.Windows.Forms.RichTextBox();
             this.btn_limpiar_comando = new System.Windows.Forms.Button();
             this.btn_ejecutar_comando = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label4 = new System.Windows.Forms.Label();
             this.txt_resultado_script_bd = new System.Windows.Forms.TextBox();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tp0_WindowsAuthentication = new System.Windows.Forms.TabPage();
@@ -57,8 +59,6 @@ namespace Tarea_Corta_1
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.btn_limpiar_Resultados = new System.Windows.Forms.Button();
-            this.rtxt_CompiladorScript = new System.Windows.Forms.RichTextBox();
             this.menuStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -178,18 +178,27 @@ namespace Tarea_Corta_1
             this.panel3.BackColor = System.Drawing.Color.White;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel3.Controls.Add(this.rtxt_CompiladorScript);
-            this.panel3.Controls.Add(this.btn_limpiar_Resultados);
             this.panel3.Controls.Add(this.btn_limpiar_comando);
             this.panel3.Controls.Add(this.btn_ejecutar_comando);
-            this.panel3.Location = new System.Drawing.Point(294, 46);
+            this.panel3.Location = new System.Drawing.Point(294, 68);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(660, 275);
+            this.panel3.Size = new System.Drawing.Size(660, 235);
             this.panel3.TabIndex = 9;
+            // 
+            // rtxt_CompiladorScript
+            // 
+            this.rtxt_CompiladorScript.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtxt_CompiladorScript.Location = new System.Drawing.Point(14, 36);
+            this.rtxt_CompiladorScript.Name = "rtxt_CompiladorScript";
+            this.rtxt_CompiladorScript.Size = new System.Drawing.Size(638, 186);
+            this.rtxt_CompiladorScript.TabIndex = 12;
+            this.rtxt_CompiladorScript.Text = "";
+            this.rtxt_CompiladorScript.TextChanged += new System.EventHandler(this.rtxt_CompiladorScript_TextChanged);
             // 
             // btn_limpiar_comando
             // 
             this.btn_limpiar_comando.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.btn_limpiar_comando.Location = new System.Drawing.Point(313, 21);
+            this.btn_limpiar_comando.Location = new System.Drawing.Point(170, 7);
             this.btn_limpiar_comando.Name = "btn_limpiar_comando";
             this.btn_limpiar_comando.Size = new System.Drawing.Size(150, 23);
             this.btn_limpiar_comando.TabIndex = 10;
@@ -200,7 +209,7 @@ namespace Tarea_Corta_1
             // btn_ejecutar_comando
             // 
             this.btn_ejecutar_comando.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.btn_ejecutar_comando.Location = new System.Drawing.Point(125, 21);
+            this.btn_ejecutar_comando.Location = new System.Drawing.Point(14, 7);
             this.btn_ejecutar_comando.Name = "btn_ejecutar_comando";
             this.btn_ejecutar_comando.Size = new System.Drawing.Size(150, 23);
             this.btn_ejecutar_comando.TabIndex = 9;
@@ -211,35 +220,46 @@ namespace Tarea_Corta_1
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Location = new System.Drawing.Point(294, 340);
+            this.tabControl1.Location = new System.Drawing.Point(294, 325);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(660, 207);
+            this.tabControl1.Size = new System.Drawing.Size(660, 222);
             this.tabControl1.TabIndex = 10;
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.label4);
             this.tabPage1.Controls.Add(this.txt_resultado_script_bd);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(652, 181);
+            this.tabPage1.Size = new System.Drawing.Size(652, 196);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Resultados";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(8, 18);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(185, 18);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Resultados de la ejecucion";
             // 
             // txt_resultado_script_bd
             // 
             this.txt_resultado_script_bd.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.txt_resultado_script_bd.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txt_resultado_script_bd.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_resultado_script_bd.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.txt_resultado_script_bd.Location = new System.Drawing.Point(0, 0);
+            this.txt_resultado_script_bd.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.txt_resultado_script_bd.Location = new System.Drawing.Point(0, 49);
             this.txt_resultado_script_bd.Multiline = true;
             this.txt_resultado_script_bd.Name = "txt_resultado_script_bd";
             this.txt_resultado_script_bd.ReadOnly = true;
             this.txt_resultado_script_bd.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txt_resultado_script_bd.Size = new System.Drawing.Size(649, 177);
+            this.txt_resultado_script_bd.Size = new System.Drawing.Size(649, 147);
             this.txt_resultado_script_bd.TabIndex = 9;
             this.txt_resultado_script_bd.Text = "Esperando conexion...";
             // 
@@ -359,26 +379,6 @@ namespace Tarea_Corta_1
             this.label1.TabIndex = 6;
             this.label1.Text = "Nombre Instancia";
             // 
-            // btn_limpiar_Resultados
-            // 
-            this.btn_limpiar_Resultados.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.btn_limpiar_Resultados.Location = new System.Drawing.Point(508, 21);
-            this.btn_limpiar_Resultados.Name = "btn_limpiar_Resultados";
-            this.btn_limpiar_Resultados.Size = new System.Drawing.Size(122, 23);
-            this.btn_limpiar_Resultados.TabIndex = 11;
-            this.btn_limpiar_Resultados.Text = "Limpiar Resultados";
-            this.btn_limpiar_Resultados.UseVisualStyleBackColor = false;
-            // 
-            // rtxt_CompiladorScript
-            // 
-            this.rtxt_CompiladorScript.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtxt_CompiladorScript.Location = new System.Drawing.Point(23, 59);
-            this.rtxt_CompiladorScript.Name = "rtxt_CompiladorScript";
-            this.rtxt_CompiladorScript.Size = new System.Drawing.Size(607, 186);
-            this.rtxt_CompiladorScript.TabIndex = 12;
-            this.rtxt_CompiladorScript.Text = "";
-            this.rtxt_CompiladorScript.TextChanged += new System.EventHandler(this.rtxt_CompiladorScript_TextChanged);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -442,8 +442,8 @@ namespace Tarea_Corta_1
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btn_ejecutar_comando;
         private System.Windows.Forms.Button btn_limpiar_comando;
-        private System.Windows.Forms.Button btn_limpiar_Resultados;
         private System.Windows.Forms.RichTextBox rtxt_CompiladorScript;
+        private System.Windows.Forms.Label label4;
     }
 }
 

@@ -128,7 +128,7 @@ namespace Clases
                 CerrarConexion();
             }
         }
-        public void EjecutarScript(string NombreInstancia, int tipoconexion, string nombre, string Comando, string nombreusuario = "", string contrasena = "")
+        public int EjecutarScript(string NombreInstancia, int tipoconexion, string nombre, string Comando, string nombreusuario = "", string contrasena = "")
         {
             try
             {
@@ -137,11 +137,11 @@ namespace Clases
                 //Conexion.ChangeDatabase(nombre);
                 SqlCommand cmd = new SqlCommand(Comando, Conexion);
                 x++;
-                cmd.ExecuteNonQuery();
+                return cmd.ExecuteNonQuery();
             }
             catch (Exception ex)
             {
-                throw new Exception("No se pudo ejectutar el script en la base de datos : " + nombre);
+                throw new Exception("Base de datos : " + Environment.NewLine + "Excepcion al ejecutar una instruccion o un proceso por lotes Transact-SQL." + nombre);
             }
             finally
             {

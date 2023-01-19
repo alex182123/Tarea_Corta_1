@@ -16,7 +16,7 @@ namespace Tarea_Corta_1
         string nombreInstancia;
         string nombreUsuario;
         string contrasenaSQL;
-        string [] palabras_reservadas_sql = new string[] {"where","into","insert","from","select"};
+        string [] palabras_reservadas_sql = new string[] {"where","into","insert","from","select","values","delete","update","alter"};
         public Form1()
         {
             InitializeComponent();
@@ -38,7 +38,6 @@ namespace Tarea_Corta_1
             rtxt_CompiladorScript.Enabled = false;
             btn_ejecutar_comando.Enabled = false;
             btn_limpiar_comando.Enabled = false;
-            btn_limpiar_Resultados.Enabled = false;
         }
 
         private void btn_Conectar_BD_Click(object sender, EventArgs e)
@@ -218,33 +217,43 @@ namespace Tarea_Corta_1
 
         private void btn_ejecutar_comando_Click(object sender, EventArgs e)
         {
-            if (cbl_BD.CheckedItems.Count != 0)
+            if (string.IsNullOrEmpty(rtxt_CompiladorScript.Text) != true)
             {
-                Class_BD obj_Conexion = new Class_BD();
-                string[] Lista_seleccionadas_DB = new string[cbl_BD.CheckedItems.Count];
-                int x = 0;
-                foreach (DataRowView Vista in cbl_BD.CheckedItems)
+                if (cbl_BD.CheckedItems.Count != 0)
                 {
-                    Lista_seleccionadas_DB[x] = Vista.Row[0].ToString();
-                    x++;
+                    Class_BD obj_Conexion = new Class_BD();
+                    string[] Lista_seleccionadas_DB = new string[cbl_BD.CheckedItems.Count];
+                    int x = 0;
+                    int filasafectadas;
+                    foreach (DataRowView Vista in cbl_BD.CheckedItems)
+                    {
+                        Lista_seleccionadas_DB[x] = Vista.Row[0].ToString();
+                        x++;
+                    }
+                    for (int i = 0; i < cbl_BD.CheckedItems.Count; i++)
+                    {
+                        try
+                        {
+                            filasafectadas = 0;
+                            filasafectadas = obj_Conexion.EjecutarScript(nombreInstancia, tipoConexion, Lista_seleccionadas_DB[i], rtxt_CompiladorScript.Text, nombreUsuario, contrasenaSQL);
+                            txt_resultado_script_bd.Text += "Base de datos : " + Environment.NewLine + "Resultado al ejecutar en " + Lista_seleccionadas_DB[i] + ": " + filasafectadas + Environment.NewLine;
+                        }
+                        catch (Exception ex)
+                        {
+                            txt_resultado_script_bd.Text += ex.Message + Environment.NewLine;
+                        }
+                    }
                 }
-                for (int i = 0; i < cbl_BD.CheckedItems.Count; i++)
+                else
                 {
-                    try
-                    {
-                        obj_Conexion.EjecutarScript(nombreInstancia, tipoConexion, Lista_seleccionadas_DB[i], rtxt_CompiladorScript.Text, nombreUsuario, contrasenaSQL);
-                        txt_resultado_script_bd.Text += "Ejecucion Exitosa" + Environment.NewLine;
-                    }
-                    catch (Exception ex)
-                    {
-                        txt_resultado_script_bd.Text += ex.Message + Environment.NewLine;
-                    }
+                    MessageBox.Show(null, "Debe seleccionar una base de datos", "Debe seleccionar una base de datos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             else
             {
-                MessageBox.Show(null,"Debe seleccionar almenos una base de datos","Debe seleccionar una base de datos",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                MessageBox.Show(null, "Por favor digite un mando válido.", "Ingresar comando valido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+            
             
         }
 
@@ -279,5 +288,6 @@ namespace Tarea_Corta_1
             this.rtxt_CompiladorScript.SelectionColor = Color.Black;
             this.rtxt_CompiladorScript.SelectionStart = this.rtxt_CompiladorScript.Text.Length;
         }
+
     }
 }
