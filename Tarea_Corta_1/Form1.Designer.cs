@@ -48,11 +48,11 @@ namespace Tarea_Corta_1
             this.rtxt_CompiladorScript = new System.Windows.Forms.RichTextBox();
             this.btn_limpiar_comando = new System.Windows.Forms.Button();
             this.btn_ejecutar_comando = new System.Windows.Forms.Button();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tc_Resultados = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.txt_resultado_script_bd = new System.Windows.Forms.TextBox();
             this.lbl_resultadosScript = new System.Windows.Forms.Label();
-            this.tabControl2 = new System.Windows.Forms.TabControl();
+            this.tc_TipoConexion = new System.Windows.Forms.TabControl();
             this.tp0_WindowsAuthentication = new System.Windows.Forms.TabPage();
             this.tp1_SQLAuthentication = new System.Windows.Forms.TabPage();
             this.txt_ContraseñaSQL = new System.Windows.Forms.TextBox();
@@ -60,16 +60,16 @@ namespace Tarea_Corta_1
             this.txt_NombreInstaciaSQL = new System.Windows.Forms.TextBox();
             this.btn_desconectarSQL = new System.Windows.Forms.Button();
             this.btn_ConectarSQL = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lbl_NombreUsuarioSQL = new System.Windows.Forms.Label();
+            this.lbl_ContraseñaSQL = new System.Windows.Forms.Label();
+            this.lbl_nombreInstanciaSQL = new System.Windows.Forms.Label();
             this.tp_btn_ejecutarComando = new System.Windows.Forms.ToolTip(this.components);
             this.menuStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.tabControl1.SuspendLayout();
+            this.tc_Resultados.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.tabControl2.SuspendLayout();
+            this.tc_TipoConexion.SuspendLayout();
             this.tp0_WindowsAuthentication.SuspendLayout();
             this.tp1_SQLAuthentication.SuspendLayout();
             this.SuspendLayout();
@@ -257,14 +257,14 @@ namespace Tarea_Corta_1
             this.btn_ejecutar_comando.UseVisualStyleBackColor = false;
             this.btn_ejecutar_comando.Click += new System.EventHandler(this.btn_ejecutar_comando_Click);
             // 
-            // tabControl1
+            // tc_Resultados
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Location = new System.Drawing.Point(294, 325);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(660, 214);
-            this.tabControl1.TabIndex = 10;
+            this.tc_Resultados.Controls.Add(this.tabPage1);
+            this.tc_Resultados.Location = new System.Drawing.Point(294, 325);
+            this.tc_Resultados.Name = "tc_Resultados";
+            this.tc_Resultados.SelectedIndex = 0;
+            this.tc_Resultados.Size = new System.Drawing.Size(660, 214);
+            this.tc_Resultados.TabIndex = 10;
             // 
             // tabPage1
             // 
@@ -304,15 +304,15 @@ namespace Tarea_Corta_1
             this.lbl_resultadosScript.TabIndex = 10;
             this.lbl_resultadosScript.Text = "Resultados de la ejecucion";
             // 
-            // tabControl2
+            // tc_TipoConexion
             // 
-            this.tabControl2.Controls.Add(this.tp0_WindowsAuthentication);
-            this.tabControl2.Controls.Add(this.tp1_SQLAuthentication);
-            this.tabControl2.Location = new System.Drawing.Point(19, 46);
-            this.tabControl2.Name = "tabControl2";
-            this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(240, 236);
-            this.tabControl2.TabIndex = 11;
+            this.tc_TipoConexion.Controls.Add(this.tp0_WindowsAuthentication);
+            this.tc_TipoConexion.Controls.Add(this.tp1_SQLAuthentication);
+            this.tc_TipoConexion.Location = new System.Drawing.Point(19, 46);
+            this.tc_TipoConexion.Name = "tc_TipoConexion";
+            this.tc_TipoConexion.SelectedIndex = 0;
+            this.tc_TipoConexion.Size = new System.Drawing.Size(240, 236);
+            this.tc_TipoConexion.TabIndex = 11;
             // 
             // tp0_WindowsAuthentication
             // 
@@ -338,9 +338,9 @@ namespace Tarea_Corta_1
             this.tp1_SQLAuthentication.Controls.Add(this.txt_NombreInstaciaSQL);
             this.tp1_SQLAuthentication.Controls.Add(this.btn_desconectarSQL);
             this.tp1_SQLAuthentication.Controls.Add(this.btn_ConectarSQL);
-            this.tp1_SQLAuthentication.Controls.Add(this.label3);
-            this.tp1_SQLAuthentication.Controls.Add(this.label2);
-            this.tp1_SQLAuthentication.Controls.Add(this.label1);
+            this.tp1_SQLAuthentication.Controls.Add(this.lbl_NombreUsuarioSQL);
+            this.tp1_SQLAuthentication.Controls.Add(this.lbl_ContraseñaSQL);
+            this.tp1_SQLAuthentication.Controls.Add(this.lbl_nombreInstanciaSQL);
             this.tp1_SQLAuthentication.Location = new System.Drawing.Point(4, 22);
             this.tp1_SQLAuthentication.Name = "tp1_SQLAuthentication";
             this.tp1_SQLAuthentication.Padding = new System.Windows.Forms.Padding(3);
@@ -390,35 +390,35 @@ namespace Tarea_Corta_1
             this.btn_ConectarSQL.UseVisualStyleBackColor = true;
             this.btn_ConectarSQL.Click += new System.EventHandler(this.btn_ConectarSQL_Click);
             // 
-            // label3
+            // lbl_NombreUsuarioSQL
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(64, 60);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(123, 16);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "Nombre de usuario";
+            this.lbl_NombreUsuarioSQL.AutoSize = true;
+            this.lbl_NombreUsuarioSQL.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_NombreUsuarioSQL.Location = new System.Drawing.Point(64, 60);
+            this.lbl_NombreUsuarioSQL.Name = "lbl_NombreUsuarioSQL";
+            this.lbl_NombreUsuarioSQL.Size = new System.Drawing.Size(123, 16);
+            this.lbl_NombreUsuarioSQL.TabIndex = 8;
+            this.lbl_NombreUsuarioSQL.Text = "Nombre de usuario";
             // 
-            // label2
+            // lbl_ContraseñaSQL
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(74, 102);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(84, 16);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Constraseña";
+            this.lbl_ContraseñaSQL.AutoSize = true;
+            this.lbl_ContraseñaSQL.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_ContraseñaSQL.Location = new System.Drawing.Point(74, 102);
+            this.lbl_ContraseñaSQL.Name = "lbl_ContraseñaSQL";
+            this.lbl_ContraseñaSQL.Size = new System.Drawing.Size(84, 16);
+            this.lbl_ContraseñaSQL.TabIndex = 7;
+            this.lbl_ContraseñaSQL.Text = "Constraseña";
             // 
-            // label1
+            // lbl_nombreInstanciaSQL
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(64, 18);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(113, 16);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Nombre Instancia";
+            this.lbl_nombreInstanciaSQL.AutoSize = true;
+            this.lbl_nombreInstanciaSQL.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_nombreInstanciaSQL.Location = new System.Drawing.Point(64, 18);
+            this.lbl_nombreInstanciaSQL.Name = "lbl_nombreInstanciaSQL";
+            this.lbl_nombreInstanciaSQL.Size = new System.Drawing.Size(113, 16);
+            this.lbl_nombreInstanciaSQL.TabIndex = 6;
+            this.lbl_nombreInstanciaSQL.Text = "Nombre Instancia";
             // 
             // Form1
             // 
@@ -426,8 +426,8 @@ namespace Tarea_Corta_1
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(973, 587);
-            this.Controls.Add(this.tabControl2);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.tc_TipoConexion);
+            this.Controls.Add(this.tc_Resultados);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.menuStrip1);
@@ -441,10 +441,10 @@ namespace Tarea_Corta_1
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            this.tabControl1.ResumeLayout(false);
+            this.tc_Resultados.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            this.tabControl2.ResumeLayout(false);
+            this.tc_TipoConexion.ResumeLayout(false);
             this.tp0_WindowsAuthentication.ResumeLayout(false);
             this.tp0_WindowsAuthentication.PerformLayout();
             this.tp1_SQLAuthentication.ResumeLayout(false);
@@ -468,10 +468,10 @@ namespace Tarea_Corta_1
         private System.Windows.Forms.LinkLabel l_lbl_SelectTodas;
         private System.Windows.Forms.LinkLabel l_lblSelectNinguna;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl tc_Resultados;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TextBox txt_resultado_script_bd;
-        private System.Windows.Forms.TabControl tabControl2;
+        private System.Windows.Forms.TabControl tc_TipoConexion;
         private System.Windows.Forms.TabPage tp0_WindowsAuthentication;
         private System.Windows.Forms.TabPage tp1_SQLAuthentication;
         private System.Windows.Forms.TextBox txt_ContraseñaSQL;
@@ -479,9 +479,9 @@ namespace Tarea_Corta_1
         private System.Windows.Forms.TextBox txt_NombreInstaciaSQL;
         private System.Windows.Forms.Button btn_desconectarSQL;
         private System.Windows.Forms.Button btn_ConectarSQL;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbl_NombreUsuarioSQL;
+        private System.Windows.Forms.Label lbl_ContraseñaSQL;
+        private System.Windows.Forms.Label lbl_nombreInstanciaSQL;
         private System.Windows.Forms.Button btn_ejecutar_comando;
         private System.Windows.Forms.Button btn_limpiar_comando;
         private System.Windows.Forms.RichTextBox rtxt_CompiladorScript;
